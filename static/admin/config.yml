@@ -1,0 +1,130 @@
+backend:
+  name: github
+  # repo: [your-repo]
+  branch: master
+  # base_url: [your-base-url]
+  # auth_endpoint: [your-auth-endpoint] *if necessary
+show_preview_links: true
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+media_folder: "content/img" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/img" # The src attribute for uploaded media will begin with /images/uploads
+collections:
+  - name: "pages" # Used in routes, e.g., /admin/collections/blog
+    label: "Pages" # Used in the UI
+    folder: "content/pages" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+      - {label: "URL", name: "url", widget: "string"}
+      - {label: "Description", name: "description", widget: "string", required: false}
+      - {label: "TLDR", name: "tldr", widget: "string", required: false}
+      - {label: "Credit", name: "credit", widget: "string", required: false, hint: "References, authors, urls, etc."}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "faq" # Used in routes, e.g., /admin/collections/blog
+    label: "FAQ" # Used in the UI
+    folder: "content/faq" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Position", name: "position", widget: "number"}
+      - {label: "Publish Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "sidebar" # Used in routes, e.g., /admin/collections/blog
+    label: "Sidebar Cards" # Used in the UI
+    folder: "content/sidebar" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Header", name: "header", widget: "string"}
+      - {label: "Sub Header", name: "subHeader", widget: "string"}
+      - {label: "Stars", name: "starts", widget: "select", options: ["4", "5"], default: "5"}
+      - {label: "CTA Label", name: "ctaLabel", widget: "string"}
+      - {label: "CTA URL", name: "ctaUrl", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Position", name: "position", widget: "number"}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - label: "Home Page Sections"
+    name: "home-page-sections"
+    files:
+    - label: "How"
+      name: "how"
+      file: "content/homepage/how.md"
+      fields:
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Publish Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+        - {label: "Body", name: "body", widget: "markdown"}
+    - label: "Why"
+      name: "why"
+      file: "content/homepage/why.md"
+      fields:
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Publish Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+        - {label: "Body", name: "body", widget: "markdown"}
+  - label: "Page Settings"
+    name: "page-settings"
+    files:
+    - label: "Home Page Settings"
+      name: "home-settings"
+      file: "content/_index.md"
+      fields:
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Subtitle", name: "subtitle", widget: "string"}
+        - {label: "Header Background Image", name: "image", widget: "image"}
+        - {label: "Logo Image", name: "logoImage", widget: "image"}
+        - {label: "Navigation Header Title", name: "navTitle", widget: "string"}
+        - {label: "Body", name: "body", widget: "markdown"}
+    - label: "Footer Settings"
+      name: "footer-settings"
+      file: "content/footer/_index.md"
+      fields:
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Image", name: "image", widget: "image", required: false}
+        - {label: "Body", name: "body", widget: "markdown"}
+
+  # EXAMPLES OF OTHER COLECTIONS
+  # - name: "talks" # Used in routes, e.g., /admin/collections/blog
+  #   label: "Talks" # Used in the UI
+  #   folder: "content/talks" # The path to the folder where the documents are stored
+  #   create: true # Allow users to create new documents in this collection
+  #   slug: "{{slug}}" # Filename template
+  #   fields: # The fields for each document, usually in front matter
+  #     - {label: "Title", name: "title", widget: "string"}
+  #     - {label: "Publish Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+  #     - {label: "Event", name: "event", widget: "string", required: false}
+  #     - {label: "Credit", name: "credit", widget: "string", required: false, hint: "References, authors, urls, etc."}
+  #     - {label: "Image", name: "image", widget: "image", required: false}
+  #     - {label: "Slides", name: "slides", widget: "file", required: false}
+  #     - {label: "Description", name: "description", widget: "string", required: false}
+  #     - {label: "Location", name: "location", widget: "string", required: false}
+  #     - {label: "Site", name: "site", widget: "string", required: false}
+  #     - {label: "Video", name: "video", widget: "string", required: false}
+  #     - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
+  #     - {label: "Body", name: "body", widget: "markdown"}
+  # - name: "slides" # Used in routes, e.g., /admin/collections/blog
+  #   label: "Slides" # Used in the UI
+  #   folder: "content/slides" # The path to the folder where the documents are stored
+  #   path: "{{slug}}/index" # Experimental
+  #   media_folder: '' # Experimental
+  #   public_folder: 'slides/{{slug}}' # Experimental
+  #   create: true # Allow users to create new documents in this collection
+  #   slug: "{{slug}}" # Filename template
+  #   fields: # The fields for each document, usually in front matter
+  #     - {label: "Title", name: "title", widget: "string"}
+  #     - {label: "Publish Date", name: "date", widget: "date", format: "YYYY-MM-DD"}
+  #     - {label: "URL", name: "url", widget: "string"}
+  #     - {label: "Image", name: "image", widget: "image", required: false}
+  #     - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false}
+  #     - {label: "Description", name: "description", widget: "string", required: false}
+  #     - {label: "Aspect Ratio", name: "ratio", widget: "string", required: false}
+  #     # - {label: "Themes", name: "themes", widget: "markdown", required: false, hint: "List like: \n-one\n-two\n-three"}
+  #     # - {label: "Classes", name: "classes", widget: "markdown", required: false, hint: "List like: \n-one\n-two\n-three"}
+  #     - {label: "Body", name: "body", widget: "markdown"}

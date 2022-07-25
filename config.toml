@@ -1,0 +1,23 @@
+# Site settings
+baseurl = "https://roletabrasileira.com.br"
+title = "Roleta Brasileira"
+paginate = 5
+buildFuture = true
+theme = "hugo-blog-template"
+
+[[menu.main]]
+  name = "Arquivos"
+  title = "Arquivos"
+  url = "/archives/"
+
+[params]
+  author = "Roleta Brasileira"
+  twitter = ""
+  classes = []
+
+[outputs]
+  home = ["HTML", "JSON", "RSS"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  taxonomyTerm = ["HTML", "RSS"]

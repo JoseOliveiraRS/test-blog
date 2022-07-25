@@ -1,0 +1,3 @@
+[submodule "themes/hugo-blog-template"]
+	path = themes/hugo-blog-template
+	url = git@github.com:rightstakes/hugo-blog-template.git
